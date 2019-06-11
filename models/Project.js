@@ -12,11 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       underscored: true
-      // freezeTableName: true
     }
   );
-
-  Project.associate = models => {};
 
   return Project;
 };

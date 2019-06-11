@@ -10,11 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       underscored: true,
       tableName: 'configurations'
-      // freezeTableName: true
     }
   );
-
-  // Configuration.associate = models => {};
 
   return Configuration;
 };

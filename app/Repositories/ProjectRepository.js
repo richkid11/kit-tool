@@ -1,8 +1,8 @@
 import Repository from './Repository';
-import { project } from '../../models';
+import { Project } from '../../models';
 
 export default class ProjectRepository extends Repository {
   Models() {
-    return project;
+    return Project;
   }
 }
