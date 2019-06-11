@@ -1,0 +1,3 @@
+#!/bin/bash
+
+vcsupport exportdb $1 $2

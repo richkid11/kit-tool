@@ -1,0 +1,10 @@
+/node_modules
+/app
+/commands
+/data
+/database
+/models
+.DS_Store
+/.vscode
+/.scripts
+/.phpintel
