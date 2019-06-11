@@ -42,7 +42,7 @@ export default class ProjectCommand extends Command {
           if (data.name === 'workspace' || data.name === 'public_html') {
             data.name = path.basename(path.dirname(process.cwd()));
           }
-          const item = await repository.where('name', data.name).first();
+          const item = await repository.findName(data.name);
           if (item) {
             let update_project = {};
             const name = await inquirer.prompt({ type: 'input', name: 'value', message: 'Update name project  : ', default: item.name });

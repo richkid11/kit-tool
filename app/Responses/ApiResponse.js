@@ -1,5 +1,4 @@
 import * as _ from 'lodash';
-import { Exception } from '@nsilly/exceptions';
 
 export default class ApiResponse {
   static item(obj, transformer) {
@@ -15,7 +14,7 @@ export default class ApiResponse {
 
   static array(array) {
     if (!_.isArray(array)) {
-      throw new Exception('ApiResponse.array expect an array', 2001);
+      throw new Error('ApiResponse.array expect an array', 2001);
     }
     return array;
   }

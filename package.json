@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "dev": "./node_modules/.bin/babel-node ./test",
     "test": "echo \"Error: no test specified\" && exit 1",
     "kit": "./node_modules/.bin/babel-node commands/kit.js",
     "generate": "./node_modules/.bin/babel-node commands/generate.js",
@@ -33,9 +34,6 @@
   "author": "Grass",
   "dependencies": {
     "@babel/runtime": "^7.3.4",
-    "@nsilly/container": "3.0.1",
-    "@nsilly/exceptions": "^2.1.1",
-    "@nsilly/repository": "3.0.0",
     "@vicoders/console": "^1.0",
     "await-of": "^1.1.2",
     "axios": "^0.18.0",

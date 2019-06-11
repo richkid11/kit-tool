@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import { Command, Error } from '../Command';
 import { DatabaseService } from './DatabaseService';
-import { App } from '@nsilly/container';
 import fs from 'fs';
 import { Console } from '@vicoders/console';
 
@@ -19,8 +18,9 @@ export default class DatabaseImport extends Command {
   }
 
   async handle(dbname, file, options) {
-    const { executeable, host, port, user, password } = await App.make(DatabaseService).checkCommand(options);
-    const command = App.make(DatabaseService).buildCommand(executeable, host, port, user, password);
+    const dbService = new DatabaseService();
+    const { executeable, host, port, user, password } = await dbService.checkCommand(options);
+    const command = dbService.buildCommand(executeable, host, port, user, password);
     if (_.isNil(dbname) || dbname === '') {
       Error('dbname is required\ndbimport <dbname> <file>');
     }

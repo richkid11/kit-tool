@@ -1,8 +1,5 @@
 import { Command } from './Command';
 import ConfigurationRepository from '../../Repositories/ConfigurationRepository';
-import ApiResponse from '../../Responses/ApiResponse';
-import { App } from '@nsilly/container';
-import ConfigurationTransformer from '../../Transformers/ConfigurationTransformer';
 
 export default class ShowConfigurationCommand extends Command {
   signature() {
@@ -14,7 +11,7 @@ export default class ShowConfigurationCommand extends Command {
   }
 
   async handle() {
-    const configs = await App.make(ConfigurationRepository).get();
-    console.log(ApiResponse.collection(configs, new ConfigurationTransformer()));
+    const configs = await new ConfigurationRepository().get();
+    console.log(configs);
   }
 }

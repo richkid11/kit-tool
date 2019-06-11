@@ -5,7 +5,6 @@ import ProjectRepository from '../../Repositories/ProjectRepository';
 import Os from '../../Utils/Os/Os';
 import Darwin from '../../Utils/Os/Darwin';
 import Linux from '../../Utils/Os/Linux';
-import { Exception } from '@nsilly/exceptions';
 import { exec } from 'child-process-promise';
 import inquirer from 'inquirer';
 
@@ -30,7 +29,7 @@ export default class OpenCommand extends Command {
         const darwin = new Darwin();
         if (!(await darwin.CheckExists('code'))) {
           if (!(await darwin.CheckExists('subl'))) {
-            throw new Exception('You not install vscode or subl');
+            throw new Error('You not install vscode or subl');
           }
         }
       }
@@ -38,7 +37,7 @@ export default class OpenCommand extends Command {
         const linux = new Linux();
         if (!(await linux.CheckExists('code'))) {
           if (!(await linux.CheckExists('subl'))) {
-            throw new Exception('You not install vscode or subl');
+            throw new Error('You not install vscode or subl');
           }
         }
       }
@@ -73,12 +72,10 @@ export default class OpenCommand extends Command {
             }
           }
 
-          const item = await repository
-            .orWhere('name', 'like', project)
-            .orWhere('id', 'like', project)
-            .first();
+          const item = await repository.findByNameOrId(project);
+
           if (!item) {
-            throw new Exception('Project not exists  !', 1);
+            throw new Error('Project not exists  !', 1);
           }
           if (!_.isUndefined(option.e)) {
             if (option.e === 'vscode') {

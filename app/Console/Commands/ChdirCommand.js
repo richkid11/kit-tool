@@ -3,7 +3,6 @@ import * as _ from 'lodash';
 import colors from 'colors';
 import ProjectRepository from '../../Repositories/ProjectRepository';
 import inquirer from 'inquirer';
-import { Exception } from '@nsilly/exceptions';
 import { spawn } from 'child_process';
 
 export default class ChdirCommand extends Command {
@@ -36,12 +35,10 @@ export default class ChdirCommand extends Command {
         }
       }
 
-      const item = await repository
-        .orWhere('name', 'like', project)
-        .orWhere('id', 'like', project)
-        .first();
+      const item = await repository.findByNameOrId(project);
+
       if (!item) {
-        throw new Exception('Project not exists  !', 1);
+        throw new Error('Project not exists  !', 1);
       }
 
       spawn('bash', ['-i'], {

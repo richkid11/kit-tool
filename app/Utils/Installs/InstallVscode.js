@@ -1,6 +1,5 @@
 import Install from './Install';
 import fs from 'fs';
-import { Exception } from '@nsilly/exceptions';
 import inquirer from 'inquirer';
 import colors from 'colors';
 import Darwin from '../Os/Darwin';
@@ -118,7 +117,7 @@ export default class InstallVscode extends Install {
         return new Promise(async (resolve, reject) => {
           try {
             if (fs.existsSync('/usr/bin/code')) {
-              throw new Exception('Vscode exitis', 1);
+              throw new Error('Vscode exitis', 1);
             }
 
             await exec('rpm --import https://packages.microsoft.com/keys/microsoft.asc');
@@ -160,7 +159,7 @@ export default class InstallVscode extends Install {
       const user = win.userInfo();
       console.log('Clear extentions ....');
       if (!(await win.CheckExists('code'))) {
-        throw new Exception('VSCode is not installed', 2);
+        throw new Error('VSCode is not installed', 2);
       }
       if (!fs.existsSync(`${user.homedir}/.vscode`)) {
         fs.mkdirSync(`${user.homedir}/.vscode`);
@@ -176,7 +175,7 @@ export default class InstallVscode extends Install {
       const user = darwin.userInfo();
       console.log('Clear extentions ....');
       if (!(await darwin.CheckExists('code'))) {
-        throw new Exception('VIsual studio not install', 2);
+        throw new Error('VIsual studio not install', 2);
       }
       if (!fs.existsSync(`${user.homedir}/.vscode`)) {
         fs.mkdirSync(`${user.homedir}/.vscode`);
@@ -202,7 +201,7 @@ export default class InstallVscode extends Install {
       if (osName === 'debian') {
         console.log('Clear extentions ....');
         if (!(await linux.CheckExists('code'))) {
-          throw new Exception('VIsual studio not install', 2);
+          throw new Error('VIsual studio not install', 2);
         }
         if (!fs.existsSync(`${user.homedir}/.vscode`)) {
           fs.mkdirSync(`${user.homedir}/.vscode`);
@@ -224,7 +223,7 @@ export default class InstallVscode extends Install {
       if (osName === 'redhat') {
         console.log('Clear extentions ....');
         if (!(await linux.CheckExists('code'))) {
-          throw new Exception('VIsual studio not install', 2);
+          throw new Error('VIsual studio not install', 2);
         }
         if (!fs.existsSync(`${user.homedir}/.vscode`)) {
           fs.mkdirSync(`${user.homedir}/.vscode`);

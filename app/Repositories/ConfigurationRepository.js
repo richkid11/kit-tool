@@ -1,18 +1,25 @@
-import Repository from './Repository';
+import _ from 'lodash';
 import models from '../../models';
-
-export default class ConfigurationRepository extends Repository {
-  Models() {
-    return models.configuration;
+export default class ConfigurationRepository {
+  async getValue(key) {
+    const item = models.configuration.findOne({
+      where: {
+        key: key
+      }
+    });
+    return item;
   }
 
   async setValue(key, value) {
-    const item = await this.updateOrCreate({ key: key }, { key: key, value: value });
-    return item;
+    const configs = models.configuration.findAll();
+    const item = _.find(configs, { key: key });
+    if (item) {
+      await item.update({ value: value });
+    } else {
+    }
   }
 
-  async getValue(key) {
-    const item = await this.where('key', key).first();
-    return item;
+  async get() {
+    return models.configuration.findAll();
   }
 }

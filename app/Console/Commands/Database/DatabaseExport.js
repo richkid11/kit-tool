@@ -3,7 +3,6 @@ import { Command, Error } from '../Command';
 import { exec } from 'child_process';
 import { DatabaseService } from './DatabaseService';
 import { Console } from '@vicoders/console';
-import { App } from '@nsilly/container';
 
 export default class DatabaseExport extends Command {
   signature() {
@@ -22,8 +21,9 @@ export default class DatabaseExport extends Command {
     if (_.isNil(dbname) || dbname === '') {
       Error('dbname is required\ndbimport <dbname> <file>');
     }
-    const { executeable, host, port, user, password } = await App.make(DatabaseService).checkCommand(options);
-    const command = App.make(DatabaseService).buildCommand(executeable, host, port, user, password);
+    const dbService = new DatabaseService();
+    const { executeable, host, port, user, password } = await dbService.checkCommand(options);
+    const command = dbService.buildCommand(executeable, host, port, user, password);
     const databases = (await Console.childProcessExec(`${command} -e "show databases"`)).split('\n');
     const is_existing = databases.indexOf(dbname) > -1;
     if (is_existing === false) {

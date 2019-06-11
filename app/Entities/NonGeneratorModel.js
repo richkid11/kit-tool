@@ -1,7 +1,6 @@
-import { NonAngularGenerator } from './NonAngularGenerator';
 import Os from '../Utils/Os/Os';
 
-export class NonGeneratorModel extends NonAngularGenerator {
+export class NonGeneratorModel {
   generateMigrationOption(migrations) {
     const os = new Os().platform();
     if (os === 'darwin') {

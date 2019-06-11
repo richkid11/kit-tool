@@ -1,8 +1,24 @@
-import Repository from './Repository';
-import { Project } from '../../models';
+import { Project } from '../../models/Project';
+export default class ProjectRepository {
+  async findName(name) {
+    return Project.findOne({
+      where: {
+        name: name
+      }
+    });
+  }
 
-export default class ProjectRepository extends Repository {
-  Models() {
-    return Project;
+  async create(project) {
+    return Project.create(project);
+  }
+
+  async get() {
+    return Project.findAll();
+  }
+
+  async findByNameOrId(condition) {
+    return Project.findOne({
+      $or: [{ name: condition }, { id: condition }]
+    });
   }
 }

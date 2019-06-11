@@ -1,5 +1,4 @@
 import { Command } from '../Command';
-import { App } from '@nsilly/container';
 import { Console } from '@vicoders/console';
 import { DatabaseService } from './DatabaseService';
 
@@ -17,8 +16,9 @@ export default class DatabaseShow extends Command {
   }
 
   async handle(options) {
-    const { executeable, host, port, user, password } = await App.make(DatabaseService).checkCommand(options);
-    const command = App.make(DatabaseService).buildCommand(executeable, host, port, user, password);
+    const dbService = new DatabaseService();
+    const { executeable, host, port, user, password } = await dbService.checkCommand(options);
+    const command = dbService.buildCommand(executeable, host, port, user, password);
 
     const listDB = (await Console.childProcessExec(`${command} -e "show databases"`)).split('\n');
     listDB.shift();

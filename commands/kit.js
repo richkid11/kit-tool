@@ -3,7 +3,6 @@
 import program from 'commander';
 import { Kernel } from '../app/Console/Kernel';
 import _ from 'lodash';
-import { Exception } from '@nsilly/exceptions';
 
 program.version('1.0.0', '-v, --version');
 const kernel = new Kernel();
@@ -21,10 +20,10 @@ _.forEach(commands, command => {
 
     for (const option of options) {
       if (_.isUndefined(option.key)) {
-        throw new Exception('Option key is required', 1);
+        throw new Error('Option key is required', 1);
       }
       if (_.isUndefined(option.description)) {
-        throw new Exception(`"${option.key}" option must have description`, 1);
+        throw new Error(`"${option.key}" option must have description`, 1);
       }
       cmd.option(option.key.slice(-1) === '?' ? `--${option.key.slice(0, -1)}` : `--${option.key} <${option.key}>`, option.description);
     }
