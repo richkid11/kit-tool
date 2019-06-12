@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import models from '../../models';
 export default class ConfigurationRepository {
   async getValue(key) {
@@ -11,11 +10,15 @@ export default class ConfigurationRepository {
   }
 
   async setValue(key, value) {
-    const configs = models.configuration.findAll();
-    const item = _.find(configs, { key: key });
-    if (item) {
-      await item.update({ value: value });
+    const config = models.configuration.findOne({
+      where: {
+        key: key
+      }
+    });
+    if (config) {
+      return models.configuration.update({ value: value }, { where: { key: key } });
     } else {
+      return models.configuration.create({ key: key, value: value });
     }
   }
 

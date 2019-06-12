@@ -1,6 +1,5 @@
 import ConfigurationRepository from '../Repositories/ConfigurationRepository';
 import { Console } from '@vicoders/console';
-import { App } from '@nsilly/container';
 import Os from './Os/Os';
 import _ from 'lodash';
 import path from 'path';
@@ -12,14 +11,14 @@ export class Configuration {
     } else {
       dockerFolder = option.dockerFolder;
     }
-    await App.make(ConfigurationRepository).setValue('dockerFolder', dockerFolder);
+    await new ConfigurationRepository().setValue('dockerFolder', dockerFolder);
   }
 
   async configDB(option) {
     let dbUser, dbPass, dbHost, dbPort, executeable;
     const updateOrCreate = async data => {
       for (const item of data) {
-        await App.make(ConfigurationRepository).setValue(item.key, item.value);
+        await new ConfigurationRepository().setValue(item.key, item.value);
       }
     };
     if (!_.has(option, 'user')) {
@@ -64,6 +63,6 @@ export class Configuration {
 
   async configTinyImage() {
     const api_key = await Console.ask('TinyImage API Key : ');
-    await App.make(ConfigurationRepository).setValue('tinyimageapikey', api_key);
+    await new ConfigurationRepository().setValue('tinyimageapikey', api_key);
   }
 }
