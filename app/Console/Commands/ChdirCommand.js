@@ -24,21 +24,24 @@ export default class ChdirCommand extends Command {
 
       if (!project) {
         const list = await repository.get();
-        _.map(list, value => {
-          console.log(`${value.id} : ${value.name}`);
+        let arr = [];
+        _.map(list, item => {
+          const obj = { name: item.name, id: item.id };
+          arr.push(obj);
         });
+        console.table(arr);
 
-        const as = await inquirer.prompt({ type: 'input', name: 'project', message: 'Select project  : ' });
+        const as = await inquirer.prompt({ type: 'input', name: 'project', message: 'Select project id : ' });
 
         if (as.project) {
           project = as.project;
         }
       }
 
-      const item = await repository.findByNameOrId(project);
+      const item = await repository.findById(project);
 
       if (!item) {
-        throw new Error('Project not exists  !', 1);
+        throw new Error('Project not exists  !');
       }
 
       spawn('bash', ['-i'], {

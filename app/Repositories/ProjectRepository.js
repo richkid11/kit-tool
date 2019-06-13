@@ -1,7 +1,7 @@
-import { Project } from '../../models/Project';
+import models from '../../models';
 export default class ProjectRepository {
   async findName(name) {
-    return Project.findOne({
+    return models.project.findOne({
       where: {
         name: name
       }
@@ -9,16 +9,18 @@ export default class ProjectRepository {
   }
 
   async create(project) {
-    return Project.create(project);
+    return models.project.create(project);
   }
 
   async get() {
-    return Project.findAll();
+    return models.project.findAll();
   }
 
-  async findByNameOrId(condition) {
-    return Project.findOne({
-      $or: [{ name: condition }, { id: condition }]
+  async findById(id) {
+    return models.project.findOne({
+      where: {
+        id: id
+      }
     });
   }
 }
