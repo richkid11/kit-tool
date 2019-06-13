@@ -61,18 +61,21 @@ export default class OpenCommand extends Command {
 
           if (!project) {
             const list = await repository.get();
-            _.map(list, value => {
-              console.log(`${value.id} : ${value.name}`);
+            const array = [];
+            _.map(list, item => {
+              const obj = { name: item.name, id: item.id };
+              array.push(obj);
             });
+            console.table(array);
 
-            const as = await inquirer.prompt({ type: 'input', name: 'project', message: 'Select project  : ' });
+            const as = await inquirer.prompt({ type: 'input', name: 'project', message: 'Select project id : ' });
 
             if (as.project) {
               project = as.project;
             }
           }
 
-          const item = await repository.findByNameOrId(project);
+          const item = await repository.findById(project);
 
           if (!item) {
             throw new Error('Project not exists  !', 1);
