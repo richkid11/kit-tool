@@ -3,7 +3,6 @@ import _ from 'lodash';
 import { NsillyRestApiGenerator, primaryField, migrationOptions, hightlightFields, addField } from '../../../../../Entities/NsillyRestApiGenerator';
 import path from 'path';
 import fs from 'fs';
-import { App } from '@nsilly/container';
 import { IndexTemplate } from '../../../../../Utils/IndexTemplate';
 import { NodeBaseHandler } from './NodeBaseHandler';
 
@@ -18,7 +17,7 @@ export class NodejsBasicRestApiHandler extends NodeBaseHandler {
     }
     const pathIndex = path.resolve(process.cwd(), pathRouter, 'index.js');
     if (!fs.existsSync(pathIndex)) {
-      await App.make(IndexTemplate).getIndexTemplate(pathIndex);
+      await new IndexTemplate().getIndexTemplate(pathIndex);
     }
     generator.setOption('router_location', pathRouter);
     generator.setOption('with', await Console.ask('Which part do you want to generate: ', null, { description: 'router,model,repository,validator,transformer,migration' }));
@@ -54,7 +53,6 @@ export class NodejsBasicRestApiHandler extends NodeBaseHandler {
         }
       }
     }
-    generator.setOption('seeder', await Console.confirm('Create Seeder: ', false))
     await this.setup();
     await generator.exec();
   }

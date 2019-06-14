@@ -2,7 +2,6 @@ import { Command } from './Command';
 import _ from 'lodash';
 import { Console } from '@vicoders/console';
 import ConfigurationRepository from '../../Repositories/ConfigurationRepository';
-import { App } from '@nsilly/container';
 const TINY_PNG_API_KEY = 'I9uWHdRpRyKFkCQ6Oi8nROt6iQw4WKHG';
 
 export default class TinyImageCommand extends Command {
@@ -20,7 +19,7 @@ export default class TinyImageCommand extends Command {
 
   async handle(file, options) {
     options = options || {};
-    const api_key_db = await App.make(ConfigurationRepository).getValue('tinyimageapikey');
+    const api_key_db = await new ConfigurationRepository().getValue('tinyimageapikey');
     let api_key;
     if (_.isNil(api_key_db) || _.isNil(api_key_db.value)) {
       api_key = TINY_PNG_API_KEY;

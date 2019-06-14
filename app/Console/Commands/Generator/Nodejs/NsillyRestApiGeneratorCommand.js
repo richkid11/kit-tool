@@ -1,6 +1,5 @@
 import { Command } from '../../Command';
 import { Console } from '@vicoders/console';
-import { App } from '@nsilly/container';
 import { NodejsBasicRestApiHandler } from './Handlers/NodejsBasicRestApiHandler';
 export default class LaravelRestApiGeneratorCommand extends Command {
   signature() {
@@ -22,7 +21,7 @@ export default class LaravelRestApiGeneratorCommand extends Command {
 
     switch (type.name) {
       case 'basic':
-        App.make(NodejsBasicRestApiHandler).handle(options);
+        new NodejsBasicRestApiHandler().handle(options);
         break;
       default:
         break;
