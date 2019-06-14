@@ -13,8 +13,8 @@ import DatabaseDelete from './Commands/Database/DatabaseDelete';
 import DatabaseShow from './Commands/Database/DatabaseShow';
 import ShowConfigurationCommand from './Commands/ShowConfigurationCommand';
 import ConfigCommand from './Commands/ConfigCommand';
-import NsillyRestApiGeneratorCommand from './Commands/Generator/Nodejs/NsillyRestApiGeneratorCommand';
 import TinyImageCommand from './Commands/TinyImageCommand';
+import RestApiGeneratorCommand from './Commands/Generator/Nodejs/RestApiGeneratorCommand';
 
 export class Kernel {
   commands() {
@@ -22,7 +22,7 @@ export class Kernel {
   }
 
   generator() {
-    return [NsillyRestApiGeneratorCommand];
+    return [RestApiGeneratorCommand];
   }
 
   installer() {

@@ -1,6 +1,6 @@
-import VicodersGeneratorInstaller from '../../../../../Utils/Installer/Javascript/VicodersGeneratorInstaller';
+import GeneratorInstaller from '../../../../../Utils/Installer/Javascript/GeneratorInstaller';
 export class NodeBaseHandler {
   async setup() {
-    await new VicodersGeneratorInstaller().install({ skipOnInstalled: true });
+    await new GeneratorInstaller().install({ skipOnInstalled: true });
   }
 }

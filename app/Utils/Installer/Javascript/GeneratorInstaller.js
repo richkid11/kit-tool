@@ -1,9 +1,9 @@
 import { JsPackageInstaller } from './JsPackageInstaller';
 
-export default class VicodersGeneratorInstaller extends JsPackageInstaller {
+export default class GeneratorInstaller extends JsPackageInstaller {
   constructor() {
     super();
-    this.pkg = '@vicoders/generator';
+    this.pkg = '@kit/generate';
   }
 
   async beforeInstall() {}

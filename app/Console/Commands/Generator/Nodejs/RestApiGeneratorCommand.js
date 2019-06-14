@@ -1,7 +1,7 @@
 import { Command } from '../../Command';
 import { Console } from '@vicoders/console';
 import { NodejsBasicRestApiHandler } from './Handlers/NodejsBasicRestApiHandler';
-export default class LaravelRestApiGeneratorCommand extends Command {
+export default class RestApiGeneratorCommand extends Command {
   signature() {
     return 'nodejs';
   }
