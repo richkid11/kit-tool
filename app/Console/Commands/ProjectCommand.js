@@ -4,7 +4,6 @@ import inquirer from 'inquirer';
 import * as _ from 'lodash';
 import remoteOriginUrl from 'remote-origin-url';
 import ProjectRepository from '../../Repositories/ProjectRepository';
-import ApiResponse from '../../Responses/ApiResponse';
 import ManagerProjects from '../../Utils/ManagerProjects';
 import { Command } from './Command';
 
@@ -59,7 +58,7 @@ export default class ProjectCommand extends Command {
           } else {
             await repository.create(data);
           }
-          console.log(colors.green(ApiResponse.success()));
+          console.log('success');
           break;
         case 'list':
           _.map(await repository.get(), value => {

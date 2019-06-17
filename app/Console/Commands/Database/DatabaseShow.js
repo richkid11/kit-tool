@@ -22,8 +22,14 @@ export default class DatabaseShow extends Command {
 
     const listDB = (await Console.childProcessExec(`${command} -e "show databases"`)).split('\n');
     listDB.shift();
+    let arr = [];
     listDB.forEach(item => {
-      console.log(item.replace(/[^a-zA-Z0-9-_]/, ''));
+      // const db = item.replace(/[^a-zA-Z0-9-_]/, '');
+      if (item !== '' && item !== 'sys' && item !== 'mysql' && item !== 'information_schema' && item !== 'performance_schema') {
+        const obj = { DBName: item };
+        arr.push(obj);
+      }
     });
+    console.table(arr);
   }
 }
