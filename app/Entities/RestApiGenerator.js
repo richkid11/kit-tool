@@ -111,7 +111,7 @@ export class RestApiGenerator extends NonGeneratorModel {
     options.push(this.generateMigrationOption(this.getMigrations()));
     options.push(`--type=${this.getType()}`);
 
-    const command = `${process.cwd()}/node_modules/.bin/ng generate @kit/generate:generator ${options.join(' ')}`;
+    const command = `${process.cwd()}/node_modules/.bin/ng generate kit-generate:generator ${options.join(' ')}`;
     await Console.spawn(command);
   }
 }
