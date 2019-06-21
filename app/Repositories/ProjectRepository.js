@@ -16,6 +16,10 @@ export default class ProjectRepository {
     return models.project.findAll();
   }
 
+  async update(id, data) {
+    return models.project.update(data, { where: { id: id } });
+  }
+
   async findById(id) {
     return models.project.findOne({
       where: {

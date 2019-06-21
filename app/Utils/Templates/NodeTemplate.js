@@ -1,6 +1,6 @@
 import fse from 'fs-extra';
 // import path from 'path';
-export class IndexTemplate {
+export class NodeTemplate {
   getIndexTemplate(file) {
     // const file = path.resolve(process.cwd(), pathRouter, `index.js`);
     const content = `
