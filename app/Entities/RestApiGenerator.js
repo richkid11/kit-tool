@@ -1,6 +1,6 @@
-import _ from 'lodash';
-import { Console } from '@vicoders/console';
+import path from 'path';
 import { NonGeneratorModel } from './NonGeneratorModel';
+import { NodeTemplate } from '../Utils/Templates/NodeTemplate';
 
 export const FIELD_TYPE_BIG_INTEGER = 'BIGINT';
 export const FIELD_TYPE_BOOLEAN = 'BOOLEAN';
@@ -46,7 +46,8 @@ export const migrationOptions = [
 export const primaryField = name => {
   return {
     field: name,
-    type: FIELD_TYPE_INCREMENT
+    type: FIELD_TYPE_INTEGER,
+    allowNull: false
   };
 };
 
@@ -58,14 +59,10 @@ export const addField = (name, type, option = {}) => {
 export class RestApiGenerator extends NonGeneratorModel {
   constructor() {
     super();
-    this.availabel_options = ['name', 'router', 'with'];
     this.migrations = [];
   }
 
   setOption(option, value) {
-    if (option !== 'name' && typeof value === 'string' && value !== '') {
-      value = value.toLowerCase();
-    }
     this[option] = value;
     return this;
   }
@@ -80,11 +77,7 @@ export class RestApiGenerator extends NonGeneratorModel {
   }
 
   getMigrations() {
-    return JSON.stringify(this.migrations);
-  }
-
-  getType() {
-    return this.type;
+    return this.migrations;
   }
 
   addMigration(field) {
@@ -96,22 +89,13 @@ export class RestApiGenerator extends NonGeneratorModel {
     this.setMigrations([{ field: 'id', type: FIELD_TYPE_INCREMENT }]);
   }
 
-  isGenerateMigration() {
-    return _.isNil(this.with) || this.with === '' || (_.isString(this.with) && _.includes(this.with.split(','), 'migration'));
-  }
-
   async exec() {
-    const options = [];
-    _.forEach(this.availabel_options, opt => {
-      if (!_.isNil(this[opt]) && this[opt] !== '') {
-        options.push(`--${opt}=${this[opt]}`);
-      }
-    });
-
-    options.push(this.generateMigrationOption(this.getMigrations()));
-    options.push(`--type=${this.getType()}`);
-
-    const command = `${process.cwd()}/node_modules/.bin/ng generate kit-generate:generator ${options.join(' ')}`;
-    await Console.spawn(command);
+    const file = path.resolve(process.cwd(), this.getOption('router'), `${this.getOption('name').toLowerCase()}.js`)
+    const template = new NodeTemplate();
+    await template.getRepositoryTemplate(this.getOption('name'));
+    await template.getControllerTemplate(this.getOption('name'));
+    await template.getModelTemplate(this.getMigrations(), this.getOption('name'));
+    await template.getMigrationTemplate(this.getMigrations(), this.getOption('name'));
+    await template.getRouterTemplate(file, this.getOption('name'));
   }
 }
