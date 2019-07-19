@@ -23,6 +23,9 @@ export default class GitCommand extends Command {
       case 'delete':
         await command.deleteRepository(options);
         break;
+      case 'list':
+        await command.listRepository();
+        break;
       default:
         break;
     }

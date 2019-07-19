@@ -37,4 +37,28 @@ export class GitHubCommand extends GitBase {
         console.log(e);
       });
   }
+
+  async listRepository() {
+    const git_user_db = await new ConfigurationRepository().getValue('git_user');
+    const { clientWithAuth } = await this.authGit();
+    const listRepo = await clientWithAuth.repos.list();
+    const arr = [];
+    for (const item of listRepo.data) {
+      let branch;
+      if (item.fork === true) {
+        branch = null;
+      } else {
+        branch = await clientWithAuth.repos
+          .listBranches({
+            owner: git_user_db.value,
+            repo: item.name
+          })
+          .then(data => data.data.map(item => item.name).toString())
+          .catch(() => null);
+      }
+      const obj = { name: item.name, language: item.language, private: item.private, branch: branch, clone: item.clone_url };
+      arr.push(obj);
+    }
+    console.table(arr);
+  }
 }
