@@ -65,4 +65,25 @@ export class Configuration {
     const api_key = await Console.ask('TinyImage API Key : ');
     await new ConfigurationRepository().setValue('tinyimageapikey', api_key);
   }
+
+  async configGit(option) {
+    const updateOrCreate = async data => {
+      for (const item of data) {
+        await new ConfigurationRepository().setValue(item.key, item.value);
+      }
+    };
+    let git_user, git_token;
+    if (!_.has(option, 'git_user')) {
+      git_user = await Console.ask('UserName Git : ');
+    } else {
+      git_user = option.git_user;
+    }
+    if (!_.has(option, 'git_token')) {
+      git_token = await Console.ask('Token Git : ');
+    } else {
+      git_token = option.git_token;
+    }
+    const data = [{ key: 'git_user', value: git_user }, { key: 'git_token', value: git_token }];
+    await updateOrCreate(data);
+  }
 }

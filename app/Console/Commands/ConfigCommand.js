@@ -41,7 +41,8 @@ export default class ConfigCommand extends Command {
     const select = await Console.select('type', [
       { name: 'db', description: 'Database Config' },
       { name: 'dockerFolder', description: 'Docker Folder Config' },
-      { name: 'tinyimage', description: 'TinyPNG API KEY https://tinypng.com/developers' }
+      { name: 'tinyimage', description: 'TinyPNG API KEY https://tinypng.com/developers' },
+      { name: 'git', description: 'Git Config' }
     ]);
     const config = new Configuration();
     switch (select.name) {
@@ -53,6 +54,9 @@ export default class ConfigCommand extends Command {
         break;
       case 'tinyimage':
         await config.configTinyImage();
+        break;
+      case 'git':
+        await config.configGit();
         break;
       default:
         console.log('Programming is the art of arrangement !');

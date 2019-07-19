@@ -34,6 +34,7 @@
   "author": "Grass",
   "dependencies": {
     "@babel/runtime": "^7.3.4",
+    "@octokit/rest": "^16.28.4",
     "@vicoders/console": "^1.0",
     "axios": "^0.18.0",
     "child-process-promise": "^2.2.1",
