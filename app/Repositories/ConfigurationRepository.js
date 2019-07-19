@@ -1,4 +1,4 @@
-import models from '../../models';
+import models from '../Models';
 export default class ConfigurationRepository {
   async getValue(key) {
     const item = models.configuration.findOne({

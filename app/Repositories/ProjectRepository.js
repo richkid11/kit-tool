@@ -1,4 +1,4 @@
-import models from '../../models';
+import models from '../Models';
 export default class ProjectRepository {
   async findName(name) {
     return models.project.findOne({
