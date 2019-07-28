@@ -25,17 +25,14 @@ export class GitHubCommand extends GitBase {
     } else {
       name = await Console.ask(`What is name's repository : `);
     }
-    await clientWithAuth.repos
+    const result = await clientWithAuth.repos
       .delete({
         owner: git_user_db.value,
         repo: name
       })
-      .then(() => {
-        console.log('successfully delete ' + name + ' repo');
-      })
-      .catch(e => {
-        console.log(e);
-      });
+      .then(() => 'successfully delete ' + name + ' repo')
+      .catch(e => e);
+    console.log(result);
   }
 
   async listRepository() {
