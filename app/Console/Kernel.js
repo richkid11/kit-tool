@@ -14,19 +14,10 @@ import DatabaseShow from './Commands/Database/DatabaseShow';
 import ShowConfigurationCommand from './Commands/ShowConfigurationCommand';
 import ConfigCommand from './Commands/ConfigCommand';
 import TinyImageCommand from './Commands/TinyImageCommand';
-import RestApiGeneratorCommand from './Commands/Generator/Nodejs/RestApiGeneratorCommand';
 
 export class Kernel {
   commands() {
     return [ChdirCommand, InstallServiceCommand, ProjectCommand, OpenCommand, CreateProjectCommand, GitCommand, PwdCommand];
-  }
-
-  generator() {
-    return [RestApiGeneratorCommand];
-  }
-
-  installer() {
-    return [];
   }
 
   supporter() {
