@@ -13,13 +13,13 @@ export const getDatabasePath = () => {
 
   if (os === 'win32') {
     const userinfo = new Win().userInfo();
-    dbpath = `${userinfo.homedir}/.npm/vcc/data/vcc.db`;
+    dbpath = `${userinfo.homedir}/.npm/kit/data/vcc.db`;
   } else if (os === 'linux') {
     const userinfo = new Linux().userInfo();
-    dbpath = `${userinfo.homedir}/.npm/vcc/data/vcc.db`;
+    dbpath = `${userinfo.homedir}/.npm/kit/data/vcc.db`;
   } else if (os === 'darwin') {
     const userinfo = new Darwin().userInfo();
-    dbpath = `${userinfo.homedir}/.npm/vcc/data/vcc.db`;
+    dbpath = `${userinfo.homedir}/.npm/kit/data/vcc.db`;
   }
   return dbpath;
 };

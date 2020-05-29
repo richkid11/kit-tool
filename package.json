@@ -1,6 +1,6 @@
 {
   "name": "kit-command",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "scripts": {
     "dev": "./node_modules/.bin/babel-node ./test",
@@ -14,21 +14,19 @@
   },
   "bin": {
     "kit": "./dist/commands/kit.js",
-    "generate": "./dist/commands/generate.js",
-    "install": "./dist/commands/install.js",
     "support": "./dist/commands/support.js",
-    "config": "./.bin/vcconfig",
+    "config": "./.bin/kitconfig",
     "importdb": "./.bin/importdb",
     "exportdb": "./.bin/exportdb",
     "createdb": "./.bin/createdb",
     "dropdb": "./.bin/dropdb",
     "showdb": "./.bin/showdb",
-    "vctiny": "./.bin/vctiny",
+    "vctiny": "./.bin/kittiny",
     "edithosts": "./.bin/edithosts"
   },
   "keywords": [
-    "CLI",
-    "Vicoders"
+    "Kit",
+    "Command"
   ],
   "author": "Grass",
   "dependencies": {

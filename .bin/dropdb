@@ -1,3 +1,3 @@
 #!/bin/bash
 
-vcsupport dropdb $1
+kitsupport dropdb $1
