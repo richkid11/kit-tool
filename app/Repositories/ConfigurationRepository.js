@@ -10,7 +10,7 @@ export default class ConfigurationRepository {
   }
 
   async setValue(key, value) {
-    const config = models.configuration.findOne({
+    const config = await models.configuration.findOne({
       where: {
         key: key
       }
