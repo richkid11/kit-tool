@@ -18,15 +18,15 @@ export class Command {
   }
 }
 
-export const Info = content => {
+export const Info = (content) => {
   console.log(content.green);
 };
 
-export const Warning = content => {
+export const Warning = (content) => {
   console.log(content.red);
 };
 
-export const Error = content => {
+export const Error = (content) => {
   console.log(content.red);
   process.exit();
 };

@@ -12,7 +12,11 @@ export default class DatabaseShow extends Command {
   }
 
   options() {
-    return [{ key: 'host', description: 'Database host' }, { key: 'user', description: 'Database username' }, { key: 'password', description: 'Database user password' }];
+    return [
+      { key: 'host', description: 'Database host' },
+      { key: 'user', description: 'Database username' },
+      { key: 'password', description: 'Database user password' }
+    ];
   }
 
   async handle(options) {
@@ -23,8 +27,7 @@ export default class DatabaseShow extends Command {
     const listDB = (await Console.childProcessExec(`${command} -e "show databases"`)).split('\n');
     listDB.shift();
     let arr = [];
-    listDB.forEach(item => {
-      // const db = item.replace(/[^a-zA-Z0-9-_]/, '');
+    listDB.forEach((item) => {
       if (item !== '' && item !== 'sys' && item !== 'mysql' && item !== 'information_schema' && item !== 'performance_schema') {
         const obj = { DBName: item };
         arr.push(obj);

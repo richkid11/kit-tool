@@ -27,7 +27,7 @@ export default class CreateProjectCommand extends Command {
   async handle(options) {
     const data = [
       {
-        url: 'https://github.com/richkid11/kit-nodejs/archive/master.zip',
+        url: 'https://github.com/shiranheika/kit-nodejs/archive/master.zip',
         name: 'nodejs',
         description: 'Create a Nodejs framework'
       }

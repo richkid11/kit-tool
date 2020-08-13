@@ -14,7 +14,10 @@ export default class DatabaseImport extends Command {
   }
 
   options() {
-    return [{ key: 'user', description: 'Database username' }, { key: 'password', description: 'Database user password' }];
+    return [
+      { key: 'user', description: 'Database username' },
+      { key: 'password', description: 'Database user password' }
+    ];
   }
 
   async handle(dbname, file, options) {

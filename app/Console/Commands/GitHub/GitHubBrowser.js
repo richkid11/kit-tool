@@ -14,8 +14,8 @@ export class GitHubBrowser extends GitBase {
       return url;
     };
 
-    const sleep = time => {
-      return new Promise(resolve => {
+    const sleep = (time) => {
+      return new Promise((resolve) => {
         setTimeout(() => {
           resolve();
         }, time);

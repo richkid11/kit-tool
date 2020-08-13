@@ -4,7 +4,7 @@
   "plugins": ["babel"],
   "rules": {
     "key-spacing": 0,
-    "max-len": [2, 180, 2],
+    "max-len": [2, 150, 2],
     "object-curly-spacing": [2, "always"],
     "no-unused-vars": ["error", { "vars": "all" }],
     "no-unused-expressions": 0,

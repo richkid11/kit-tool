@@ -13,7 +13,11 @@ export default class DatabaseCreate extends Command {
   }
 
   options() {
-    return [{ key: 'host', description: 'Database host' }, { key: 'user', description: 'Database user' }, { key: 'password', description: 'Database password' }];
+    return [
+      { key: 'host', description: 'Database host' },
+      { key: 'user', description: 'Database user' },
+      { key: 'password', description: 'Database password' }
+    ];
   }
 
   async handle(dbname, options) {

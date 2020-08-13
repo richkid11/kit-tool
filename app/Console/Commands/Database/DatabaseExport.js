@@ -14,7 +14,10 @@ export default class DatabaseExport extends Command {
   }
 
   options() {
-    return [{ key: 'user', description: 'Database username' }, { key: 'password', description: 'Database user password' }];
+    return [
+      { key: 'user', description: 'Database username' },
+      { key: 'password', description: 'Database user password' }
+    ];
   }
 
   async handle(dbname, file, options) {
@@ -30,6 +33,6 @@ export default class DatabaseExport extends Command {
       Error('Database not exist !');
     }
     await exec(`${command.replace('mysql', 'mysqldump')} ${dbname} > ${file}.sql`);
-    console.log('Export success !')
+    console.log('Export success !');
   }
 }

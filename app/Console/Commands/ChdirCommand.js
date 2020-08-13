@@ -25,7 +25,7 @@ export default class ChdirCommand extends Command {
       if (!project) {
         const list = await repository.get();
         let arr = [];
-        _.map(list, item => {
+        _.map(list, (item) => {
           const obj = { name: item.name, id: item.id };
           arr.push(obj);
         });

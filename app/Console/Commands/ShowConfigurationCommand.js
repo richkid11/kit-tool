@@ -13,7 +13,10 @@ export default class ShowConfigurationCommand extends Command {
   }
 
   async handle() {
-    const type = await Console.select('type', [{ name: 'config', description: 'Show All Config' }, { name: 'project', description: 'Show All Project' }]);
+    const type = await Console.select('type', [
+      { name: 'config', description: 'Show All Config' },
+      { name: 'project', description: 'Show All Project' }
+    ]);
     switch (type.name) {
       case 'config':
         const repository = new ConfigurationRepository();

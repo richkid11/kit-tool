@@ -31,7 +31,7 @@ export class GitHubCommand extends GitBase {
         repo: name
       })
       .then(() => 'successfully delete ' + name + ' repo')
-      .catch(e => e);
+      .catch((e) => e);
     console.log(result);
   }
 
@@ -50,7 +50,7 @@ export class GitHubCommand extends GitBase {
             owner: git_user_db.value,
             repo: item.name
           })
-          .then(data => data.data.map(item => item.name).toString())
+          .then((data) => data.data.map((item) => item.name).toString())
           .catch(() => null);
       }
       const obj = { name: item.name, language: item.language, private: item.private, branch: branch, clone: item.clone_url };

@@ -53,30 +53,22 @@ export default class OpenCommand extends Command {
           console.log(`open : ${path_host}`);
           await exec(`${editer} ${path_host}`);
           break;
-        case 'config':
-          await exec(`${editer} ${__dirname}/../../config/config.json`);
-          break;
         default:
           const repository = new ProjectRepository();
-
           if (!project) {
             const list = await repository.get();
             const array = [];
-            _.map(list, item => {
+            _.map(list, (item) => {
               const obj = { name: item.name, id: item.id };
               array.push(obj);
             });
             console.table(array);
-
             const as = await inquirer.prompt({ type: 'input', name: 'project', message: 'Select project id : ' });
-
             if (as.project) {
               project = as.project;
             }
           }
-
           const item = await repository.findById(project);
-
           if (!item) {
             throw new Error('Project not exists  !', 1);
           }
@@ -87,7 +79,6 @@ export default class OpenCommand extends Command {
               editer = option.e;
             }
           }
-
           await exec(`${editer} ${item.dir_home}`);
           break;
       }

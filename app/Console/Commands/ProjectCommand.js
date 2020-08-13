@@ -16,7 +16,10 @@ export default class ProjectCommand extends Command {
   }
 
   options() {
-    return [{ key: 'drop', description: 'Delete project' }, { key: 'update', description: 'Update project' }];
+    return [
+      { key: 'drop', description: 'Delete project' },
+      { key: 'update', description: 'Update project' }
+    ];
   }
 
   async handle(select, options) {
@@ -35,7 +38,7 @@ export default class ProjectCommand extends Command {
         break;
       case 'list':
         const arr = [];
-        _.map(await repository.get(), value => {
+        _.map(await repository.get(), (value) => {
           const obj = { id: value.id, name: value.name };
           arr.push(obj);
         });

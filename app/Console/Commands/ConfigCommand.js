@@ -12,7 +12,7 @@ export default class ConfigCommand extends Command {
   }
 
   description() {
-    return 'Setup config for Vicoders/cli !';
+    return 'Setup config for command/cli !';
   }
 
   options() {
