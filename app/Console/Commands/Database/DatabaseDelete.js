@@ -13,8 +13,10 @@ export default class DatabaseDelete extends Command {
 
   options() {
     return [
+      { key: 'host', description: 'Database host' },
       { key: 'user', description: 'Database username' },
-      { key: 'password', description: 'Database user password' }
+      { key: 'password', description: 'Database user password' },
+      { key: 'port', description: 'Database port' }
     ];
   }
 

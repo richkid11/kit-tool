@@ -16,7 +16,8 @@ export default class DatabaseCreate extends Command {
     return [
       { key: 'host', description: 'Database host' },
       { key: 'user', description: 'Database user' },
-      { key: 'password', description: 'Database password' }
+      { key: 'password', description: 'Database password' },
+      { key: 'port', description: 'Database port' }
     ];
   }
 

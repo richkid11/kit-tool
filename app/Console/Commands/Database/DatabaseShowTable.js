@@ -2,13 +2,13 @@ import { Command } from '../Command';
 import { Console } from '@vicoders/console';
 import { DatabaseService } from './DatabaseService';
 
-export default class DatabaseShow extends Command {
+export default class DatabaseShowTable extends Command {
   signature() {
-    return 'showdb';
+    return 'showtable <table>';
   }
 
   description() {
-    return 'Show all database !';
+    return 'Show all table !';
   }
 
   options() {
@@ -20,17 +20,17 @@ export default class DatabaseShow extends Command {
     ];
   }
 
-  async handle(options) {
+  async handle(table, options) {
     const dbService = new DatabaseService();
     const { executeable, host, port, user, password } = await dbService.checkCommand(options);
     const command = dbService.buildCommand(executeable, host, port, user, password);
 
-    const listDB = (await Console.childProcessExec(`${command} -e "show databases"`)).split('\n');
-    listDB.shift();
+    const listTable = (await Console.childProcessExec(`${command} -e "show tables from ${table}"`)).split('\n');
+    listTable.shift();
     let arr = [];
-    listDB.forEach((item) => {
-      if (item !== '' && item !== 'sys' && item !== 'mysql' && item !== 'information_schema' && item !== 'performance_schema') {
-        const obj = { DBName: item };
+    listTable.forEach((item) => {
+      if (item !== '') {
+        const obj = { TableName: item };
         arr.push(obj);
       }
     });

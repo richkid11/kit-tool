@@ -11,6 +11,7 @@ import DatabaseCreate from './Commands/Database/DatabaseCreate';
 import DatabaseImport from './Commands/Database/DatabaseImport';
 import DatabaseDelete from './Commands/Database/DatabaseDelete';
 import DatabaseShow from './Commands/Database/DatabaseShow';
+import DatabaseShowTable from './Commands/Database/DatabaseShowTable';
 import ShowConfigurationCommand from './Commands/ShowConfigurationCommand';
 import ConfigCommand from './Commands/ConfigCommand';
 import TinyImageCommand from './Commands/TinyImageCommand';
@@ -29,6 +30,7 @@ export class Kernel {
       DatabaseImport,
       DatabaseDelete,
       DatabaseShow,
+      DatabaseShowTable,
       ConfigCommand,
       TinyImageCommand
     ];
