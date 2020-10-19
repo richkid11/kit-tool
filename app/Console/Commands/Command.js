@@ -28,5 +28,5 @@ export const Warning = (content) => {
 
 export const Error = (content) => {
   console.log(content.red);
-  process.exit();
+  process.exit(0);
 };

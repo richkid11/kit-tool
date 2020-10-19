@@ -2,8 +2,17 @@ import _ from 'lodash';
 import Os from '../../../Utils/Os/Os';
 import ConfigurationRepository from '../../../Repositories/ConfigurationRepository';
 import path from 'path';
+import { Console } from '@vicoders/console';
+import { Error } from '../Command';
 
 export class DatabaseService {
+  constructor() {
+    Console.childProcessExec(`mysql --version`)
+      .then((a) => console.log(a))
+      .catch((e) => {
+        Error('You need install mysql');
+      });
+  }
   async checkCommand(options) {
     let host, port, user, password, executeable;
     if (!_.has(options, 'host')) {
