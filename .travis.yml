@@ -3,6 +3,7 @@ nodejs:
   - 12
 script:
   - echo '*** Starting build ***'
+  - npm run test
 before_deploy:
   - npm run build
 deploy:
