@@ -10,7 +10,7 @@ deploy:
   provider: npm
   username: "sonnv"
   email: "ngovanson196@gmail.com"
-  api_key: "e1682f75-e86c-4ddb-8fba-5ed1cebee813"
+  api_key: "0ca56f2f-0514-40de-ab69-fb0f5f282085"
   skip_cleanup: true
   on:
     branch: dev
