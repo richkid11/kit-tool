@@ -30,3 +30,7 @@ export const Error = (content) => {
   console.log(content.red);
   process.exit(0);
 };
+
+export const Table = (arr) => {
+  console.table(arr);
+};

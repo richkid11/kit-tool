@@ -1,6 +1,5 @@
-import { Command } from './Command';
+import { Command, Error, Info } from './Command';
 import * as _ from 'lodash';
-import colors from 'colors';
 import InstallVscode from '../../Utils/Installs/InstallVscode';
 import inquirer from 'inquirer';
 // import of from 'await-of';
@@ -37,14 +36,14 @@ export default class VscodeCommand extends Command {
           const install = new InstallVscode();
           const result = await install.service();
           if (result.code === 1) {
-            console.log(colors.green(result.message));
+            Info(result.message);
           }
           const extention = await inquirer.prompt({ type: 'confirm', name: 'extention', message: 'you want install extentions : ', default: true });
           if (extention.extention) {
             await install.extentions();
           }
         } catch (e) {
-          console.log(colors.red(e.message));
+          Error(e.message);
         }
         break;
       default:

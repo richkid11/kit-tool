@@ -1,4 +1,4 @@
-import { Command } from '../Command';
+import { Command, Table } from '../Command';
 import { Console } from '@vicoders/console';
 import { DatabaseService } from './DatabaseService';
 
@@ -34,6 +34,6 @@ export default class DatabaseShow extends Command {
         arr.push(obj);
       }
     });
-    console.table(arr);
+    Table(arr);
   }
 }

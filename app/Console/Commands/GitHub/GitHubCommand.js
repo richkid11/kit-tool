@@ -2,6 +2,7 @@ import { GitBase } from './GitBase';
 import _ from 'lodash';
 import { Console } from '@vicoders/console';
 import ConfigurationRepository from '../../../Repositories/ConfigurationRepository';
+import { Table } from '../Command';
 export class GitHubCommand extends GitBase {
   async createRepository(options) {
     const { clientWithAuth } = await this.authGit();
@@ -56,6 +57,6 @@ export class GitHubCommand extends GitBase {
       const obj = { name: item.name, language: item.language, private: item.private, branch: branch, clone: item.clone_url };
       arr.push(obj);
     }
-    console.table(arr);
+    Table(arr);
   }
 }

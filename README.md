@@ -24,4 +24,4 @@ $ npm install -g kit-command --unsafe
 * Run command `kit project list --update [projectId]` : Update info project saved with id.
 
 ##### 2. kit open
-* Run command `kit open <project>` : [<project>] is optional. It could `projectId` or `host`. Default open with vscode.
+* Run command `kit open <project>` : `[<project>]` is optional. It could `projectId` or `host`. Default open with vscode.

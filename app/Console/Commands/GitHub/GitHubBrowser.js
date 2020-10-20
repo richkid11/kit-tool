@@ -4,6 +4,7 @@ import gitUrlParse from 'git-url-parse';
 import remoteOriginUrl from 'remote-origin-url';
 import inquirer from 'inquirer';
 import * as _ from 'lodash';
+import { Info } from '../Command';
 
 export class GitHubBrowser extends GitBase {
   async actionBrowser() {
@@ -66,7 +67,7 @@ export class GitHubBrowser extends GitBase {
     availbleCommands.forEach((item, key) => {
       message += `${key + 1}. ${item.description} \n`;
     });
-    console.log(message);
+    Info(message);
 
     const answer = await inquirer.prompt({ type: 'input', name: 'command', message: 'Task Number: ', default: 1 });
     const command = availbleCommands[Number(answer.command) - 1];

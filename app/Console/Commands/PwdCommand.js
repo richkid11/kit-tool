@@ -7,7 +7,6 @@ export default class PwdCommand extends Command {
   }
 
   description() {
-    // Description is optional
     return 'Print current working directory and copy it to clipboard';
   }
 

@@ -1,4 +1,4 @@
-import { Command } from '../Command';
+import { Command, Info } from '../Command';
 import { DatabaseService } from './DatabaseService';
 import { Console } from '@vicoders/console';
 
@@ -27,7 +27,7 @@ export default class DatabaseDelete extends Command {
       const { executeable, host, port, user, password } = await dbService.checkCommand(options);
       const command = dbService.buildCommand(executeable, host, port, user, password);
       await Console.childProcessExec(`${command} -e 'drop database if exists ${dbname}'`).then(() => {
-        console.log(`Deleted success database ${dbname}!`);
+        Info(`Deleted success database ${dbname}!`);
       });
     }
   }

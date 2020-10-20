@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { Command, Error } from '../Command';
+import { Command, Error, Info } from '../Command';
 import { DatabaseService } from './DatabaseService';
 import { Console } from '@vicoders/console';
 
@@ -34,6 +34,6 @@ export default class DatabaseCreate extends Command {
     } else {
       await Console.childProcessExec(`${command} -e 'create database if not exists ${dbname}'`);
     }
-    console.log('Create success !');
+    Info('Create success !');
   }
 }

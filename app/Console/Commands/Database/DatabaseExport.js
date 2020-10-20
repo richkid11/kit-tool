@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { Command, Error } from '../Command';
+import { Command, Error, Info } from '../Command';
 import { exec } from 'child_process';
 import { DatabaseService } from './DatabaseService';
 import { Console } from '@vicoders/console';
@@ -35,6 +35,6 @@ export default class DatabaseExport extends Command {
       Error('Database not exist !');
     }
     await exec(`${command.replace('mysql', 'mysqldump')} ${dbname} > ${file}.sql`);
-    console.log('Export success !');
+    Info('Export success !');
   }
 }

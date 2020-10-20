@@ -8,7 +8,7 @@ import { Error } from '../Command';
 export class DatabaseService {
   constructor() {
     Console.childProcessExec(`mysql --version`)
-      .then((a) => console.log(a))
+      .then((a) => a)
       .catch((e) => {
         Error('You need install mysql');
       });

@@ -1,4 +1,4 @@
-import { Command } from './Command';
+import { Command, Info } from './Command';
 import { Configuration } from '../../Utils/Configuration';
 import { Console } from '@vicoders/console';
 import fs from 'fs';
@@ -59,7 +59,7 @@ export default class ConfigCommand extends Command {
         await config.configGit();
         break;
       default:
-        console.log('Programming is the art of arrangement !');
+        Info('Programming is the art of arrangement !');
         break;
     }
   }

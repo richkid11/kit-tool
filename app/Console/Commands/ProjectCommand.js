@@ -2,7 +2,7 @@ import GitUrlParse from 'git-url-parse';
 import * as _ from 'lodash';
 import remoteOriginUrl from 'remote-origin-url';
 import ProjectRepository from '../../Repositories/ProjectRepository';
-import { Command } from './Command';
+import { Command, Info, Table, Warning } from './Command';
 
 const path = require('path');
 
@@ -34,7 +34,7 @@ export default class ProjectCommand extends Command {
     switch (select) {
       case '.':
         await repository.create(data);
-        console.log('success');
+        Info('Success !');
         break;
       case 'list':
         const arr = [];
@@ -42,11 +42,11 @@ export default class ProjectCommand extends Command {
           const obj = { id: value.id, name: value.name };
           arr.push(obj);
         });
-        console.table(arr);
+        Table(arr);
         if (_.has(options, 'drop')) {
           const project = await repository.findById(options.drop);
           if (!project) {
-            console.log('Project not found');
+            Warning('Project not found');
             break;
           }
           await project.destroy();
@@ -54,7 +54,7 @@ export default class ProjectCommand extends Command {
         if (_.has(options, 'update')) {
           const project = await repository.findById(options.update);
           if (!project) {
-            console.log('Project not found');
+            Warning('Project not found');
             break;
           }
           await repository.update(project.id, data);

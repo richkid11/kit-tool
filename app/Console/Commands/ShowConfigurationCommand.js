@@ -1,4 +1,4 @@
-import { Command } from './Command';
+import { Command, Table } from './Command';
 import ConfigurationRepository from '../../Repositories/ConfigurationRepository';
 import { Console } from '@vicoders/console';
 import ProjectRepository from '../../Repositories/ProjectRepository';
@@ -26,7 +26,7 @@ export default class ShowConfigurationCommand extends Command {
           const object = { key: item.key, value: item.value };
           array.push(object);
         }
-        console.table(array);
+        Table(array);
         break;
       case 'project':
         const project = new ProjectRepository();
@@ -36,7 +36,7 @@ export default class ShowConfigurationCommand extends Command {
           const obj = { name: item.name, framework: item.framework, id: item.id };
           arr.push(obj);
         }
-        console.table(arr);
+        Table(arr);
         break;
       default:
         break;

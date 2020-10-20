@@ -1,6 +1,5 @@
-import { Command } from './Command';
+import { Command, Error, Table } from './Command';
 import * as _ from 'lodash';
-import colors from 'colors';
 import ProjectRepository from '../../Repositories/ProjectRepository';
 import inquirer from 'inquirer';
 import { spawn } from 'child_process';
@@ -29,7 +28,7 @@ export default class ChdirCommand extends Command {
           const obj = { name: item.name, id: item.id };
           arr.push(obj);
         });
-        console.table(arr);
+        Table(arr);
 
         const as = await inquirer.prompt({ type: 'input', name: 'project', message: 'Select project id : ' });
 
@@ -50,7 +49,7 @@ export default class ChdirCommand extends Command {
         stdio: 'inherit'
       });
     } catch (e) {
-      console.log(colors.red(e.message));
+      Error(e.message)
     }
   }
 }

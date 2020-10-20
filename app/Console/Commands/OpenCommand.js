@@ -1,6 +1,5 @@
-import { Command } from './Command';
+import { Command, Error, Table } from './Command';
 import * as _ from 'lodash';
-import colors from 'colors';
 import ProjectRepository from '../../Repositories/ProjectRepository';
 import Os from '../../Utils/Os/Os';
 import Darwin from '../../Utils/Os/Darwin';
@@ -62,7 +61,7 @@ export default class OpenCommand extends Command {
               const obj = { name: item.name, id: item.id };
               array.push(obj);
             });
-            console.table(array);
+            Table(array);
             const as = await inquirer.prompt({ type: 'input', name: 'project', message: 'Select project id : ' });
             if (as.project) {
               project = as.project;
@@ -83,7 +82,7 @@ export default class OpenCommand extends Command {
           break;
       }
     } catch (e) {
-      console.log(colors.red(e.message));
+      Error(e.message);
     }
   }
 }

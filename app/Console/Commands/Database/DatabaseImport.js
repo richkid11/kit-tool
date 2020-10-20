@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { Command, Error } from '../Command';
+import { Command, Error, Info } from '../Command';
 import { DatabaseService } from './DatabaseService';
 import fs from 'fs';
 import { Console } from '@vicoders/console';
@@ -37,6 +37,6 @@ export default class DatabaseImport extends Command {
     }
     await Console.childProcessExec(`${command} -p${password} -e "create database if not exists ${dbname}"`);
     await Console.childProcessExec(`${command} -p${password} ${dbname} < ${file}`);
-    console.log('Import success !');
+    Info('Import success !');
   }
 }
