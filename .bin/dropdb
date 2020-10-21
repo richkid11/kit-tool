@@ -1,3 +1,3 @@
 #!/bin/bash
 
-kitsupport dropdb $1
+support dropdb $1

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-kitsupport createdb $1
+support createdb $1
