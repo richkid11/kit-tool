@@ -3,6 +3,7 @@ import * as _ from 'lodash';
 import ProjectRepository from '../../Repositories/ProjectRepository';
 import inquirer from 'inquirer';
 import { spawn } from 'child_process';
+import { Exception } from '../../Utils/Exception';
 
 export default class ChdirCommand extends Command {
   signature() {
@@ -32,16 +33,12 @@ export default class ChdirCommand extends Command {
 
         const as = await inquirer.prompt({ type: 'input', name: 'project', message: 'Select project id : ' });
 
-        if (as.project) {
-          project = as.project;
-        }
+        if (as.project) project = as.project;
       }
 
       const item = await repository.findById(project);
 
-      if (!item) {
-        throw new Error('Project not exists  !');
-      }
+      if (!item) throw new Exception('Project not exists  !');
 
       spawn('bash', ['-i'], {
         cwd: item.dir_home,
@@ -49,7 +46,7 @@ export default class ChdirCommand extends Command {
         stdio: 'inherit'
       });
     } catch (e) {
-      Error(e.message)
+      Error(e.message);
     }
   }
 }

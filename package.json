@@ -21,7 +21,7 @@
     "createdb": "./.bin/createdb",
     "dropdb": "./.bin/dropdb",
     "showdb": "./.bin/showdb",
-    "vctiny": "./.bin/kittiny",
+    "tiny": "./.bin/kittiny",
     "edithosts": "./.bin/edithosts"
   },
   "keywords": [

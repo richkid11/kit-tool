@@ -1,5 +1,5 @@
 {
-  "use_db_commands": ["project", "open", "create-config", "showdb", "createdb", "importdb", "dbdropdb", "exportdb", "showconfig", "website", "config", "vctiny", "git"],
+  "use_db_commands": ["project", "open", "create-config", "showdb", "createdb", "importdb", "dbdropdb", "exportdb", "showconfig", "website", "config", "tiny", "git"],
   "apache": {
     "dir_conf": "",
     "dir_etc": ""

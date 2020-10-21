@@ -1,8 +1,9 @@
 import 'colors';
+import { Exception } from '../../Utils/Exception';
 
 export class Command {
   signature() {
-    throw new Error('Method not implemented', 1006);
+    throw new Exception('Method not implemented', 1006);
   }
 
   description() {
@@ -14,7 +15,7 @@ export class Command {
   }
 
   handle() {
-    throw new Error('Method not implemented', 1006);
+    throw new Exception('Method not implemented', 1006);
   }
 }
 

@@ -6,7 +6,7 @@ const TINY_PNG_API_KEY = 'I9uWHdRpRyKFkCQ6Oi8nROt6iQw4WKHG';
 
 export default class TinyImageCommand extends Command {
   signature() {
-    return 'vctiny <file>';
+    return 'tiny <file>';
   }
 
   description() {
