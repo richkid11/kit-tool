@@ -1,6 +1,6 @@
 {
   "name": "kit-command",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "",
   "scripts": {
     "dev": "./node_modules/.bin/babel-node ./test",
