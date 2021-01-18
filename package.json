@@ -1,6 +1,6 @@
 {
   "name": "kit-command",
-  "version": "1.0.25",
+  "version": "1.0.24",
   "description": "",
   "scripts": {
     "dev": "./node_modules/.bin/babel-node ./test",
@@ -10,7 +10,10 @@
     "migrate": "./node_modules/.bin/sequelize db:migrate",
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,error_code.md,README.md,app.test.js --copy-files",
     "publish_module": "npm run build && npx @codersvn/npm-auto-version && npm publish --access public && rm -rf dist",
-    "publish_module_only": "npm run build && npm publish --access public && rm -rf dist"
+    "publish_module_only": "npm run build && npm publish --access public && rm -rf dist",
+    "bug-version": "npm version patch",
+    "feature-version": "npm version minor",
+    "major-version": "npm version major"
   },
   "bin": {
     "kit": "./dist/commands/kit.js",

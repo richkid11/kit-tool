@@ -32,7 +32,7 @@ export default class CreateProjectCommand extends Command {
       //   description: 'Create a Nodejs framework'
       // }
       {
-        url: 'https://bitbucket.org/son2412/0.63.4/src/get/master.zip',
+        url: 'https://bitbucket.org/son2412/0.63.4/get/master.zip',
         name: 'React Native 0.63',
         description: 'Create a React Native framework version 0.63'
       }
