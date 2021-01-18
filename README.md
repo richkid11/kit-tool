@@ -25,3 +25,7 @@ $ npm install -g kit-command --unsafe
 
 ##### 2. kit open
 * Run command `kit open <project>` : `[<project>]` is optional. It could `projectId` or `host`. Default open with vscode.
+
+##### 2. kit create-project
+* Run command `kit create-project`: Choose project and enter.
+* * 1. React Native version 0.63

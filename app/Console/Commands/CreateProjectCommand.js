@@ -26,10 +26,15 @@ export default class CreateProjectCommand extends Command {
 
   async handle(options) {
     const data = [
+      // {
+      //   url: 'https://github.com/shiranheika/kit-nodejs/archive/master.zip',
+      //   name: 'nodejs',
+      //   description: 'Create a Nodejs framework'
+      // }
       {
-        url: 'https://github.com/shiranheika/kit-nodejs/archive/master.zip',
-        name: 'nodejs',
-        description: 'Create a Nodejs framework'
+        url: 'https://bitbucket.org/son2412/0.63.4/src/get/master.zip',
+        name: 'React Native 0.63',
+        description: 'Create a React Native framework version 0.63'
       }
     ];
     let kit;
