@@ -32,9 +32,14 @@ export default class CreateProjectCommand extends Command {
       //   description: 'Create a Nodejs framework'
       // }
       {
-        url: 'https://bitbucket.org/son2412/0.63.4/get/master.zip',
-        name: 'React Native 0.63',
-        description: 'Create a React Native framework version 0.63'
+        url: 'https://bitbucket.org/son2412/0.63.4-rest-api/get/master.zip',
+        name: 'React-Native-0.63-Rest',
+        description: 'Create a React Native framework version 0.63 using RESTful Api'
+      },
+      {
+        url: 'https://bitbucket.org/son2412/0.63.4-graphql/get/master.zip',
+        name: 'React-Native-0.63-GraphQL',
+        description: 'Create a React Native framework version 0.63 using GraphQL'
       }
     ];
     let kit;
